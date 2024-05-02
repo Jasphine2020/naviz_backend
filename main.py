@@ -27,18 +27,28 @@ app.mount('/images', StaticFiles(directory='files/images'), name='images')
 
 
 # >>>>>>>>>>>> CONNECTING TO THE DATABASE ...
+
+
+# Connection details
+host = 'dpg-copqu6ljm4es73a9ru10-a.oregon-postgres.render.com'
+dbname = 'naviz_database'
+user = 'root'
+password = 'NblwTvV0JCoCiTX9J7ScdERpUp70jtWL'
+port = '5432'
+
 while True:
     try:
-        connection = psycopg2.connect(host='localhost',
-                                      port='2611',
-                                      database='navi',
-                                      user='postgres',
-                                      password='Jasphine@postgres2611',
+        connection = psycopg2.connect(host=host,
+                                      port=port,
+                                      database=dbname,
+                                      user=user,
+                                      password=password,
                                       cursor_factory=RealDictCursor)
         cursor = connection.cursor()
         break
     except Exception as error:
         time.sleep(2)
+
 
 # >>>>>>>>>>>>>>>> FETCHING ALL PRODUCTS FOR THE HOME PAGE LOADING
 @app.get('/', status_code=status.HTTP_200_OK)
