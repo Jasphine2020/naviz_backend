@@ -45,19 +45,8 @@ while True:
                                       password=password,
                                       cursor_factory=RealDictCursor)
         cursor = connection.cursor()
-        
-        # Adding the "image" column if it doesn't exist
-        cursor.execute("""
-            DO
-            $$
-            BEGIN
-                IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'products' AND column_name = 'image') THEN
-                    ALTER TABLE products ADD COLUMN image TEXT;
-                END IF;
-            END
-            $$
-        """)
-        
+        # Removing all items from the "products" table
+        cursor.execute("DELETE FROM products;")
         connection.commit()
         break
     except Exception as error:
