@@ -50,7 +50,6 @@ while connection is None:
         print(error)
         time.sleep(2)
 
-
 # >>>>>>>>>>>>>>>> FETCHING ALL PRODUCTS FOR THE HOME PAGE LOADING
 @app.get('/', status_code=status.HTTP_200_OK)
 async def fetch_products():
