@@ -47,7 +47,8 @@ while True:
         cursor = connection.cursor()
         break
     except Exception as error:
-        time.sleep(2)
+        connection.rollback()
+        print(error)
 
 
 # >>>>>>>>>>>>>>>> FETCHING ALL PRODUCTS FOR THE HOME PAGE LOADING
