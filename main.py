@@ -29,11 +29,11 @@ app.mount('/images', StaticFiles(directory='files/images'), name='images')
 # >>>>>>>>>>>> CONNECTING TO THE DATABASE ...
 
 # Connection details
-host = 'dpg-copqu6ljm4es73a9ru10-a'
-dbname = 'naviz_database'
-user = 'root'
-password = 'NblwTvV0JCoCiTX9J7ScdERpUp70jtWL'
-port = '5432'
+host = os.environ.get('DB_HOST')
+dbname = os.environ.get('DB_NAME')
+user = os.environ.get('DB_USER')
+password = os.environ.get('DB_PASSWORD')
+port = os.environ.get('DB_PORT')
 
 # Establishing the database connection
 while True:
