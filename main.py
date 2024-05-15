@@ -45,9 +45,6 @@ while True:
                                       password=password,
                                       cursor_factory=RealDictCursor)
         cursor = connection.cursor()
-        # Removing all items from the "products" table
-        cursor.execute("DELETE FROM products;")
-        connection.commit()
         break
     except Exception as error:
         connection.rollback()
