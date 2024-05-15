@@ -30,7 +30,7 @@ app.mount('/images', StaticFiles(directory='files/images'), name='images')
 
 
 # Connection details
-host = 'dpg-copqu6ljm4es73a9ru10-a.oregon-postgres.render.com'
+host = 'dpg-copqu6ljm4es73a9ru10-a'
 dbname = 'naviz_database'
 user = 'root'
 password = 'NblwTvV0JCoCiTX9J7ScdERpUp70jtWL'
