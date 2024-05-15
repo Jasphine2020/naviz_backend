@@ -36,7 +36,8 @@ password = os.environ.get('DB_PASSWORD')
 port = os.environ.get('DB_PORT')
 
 # Establishing the database connection
-while True:
+connection = None
+while connection is None:
     try:
         connection = psycopg2.connect(host=host,
                                       port=port,
@@ -45,10 +46,9 @@ while True:
                                       password=password,
                                       cursor_factory=RealDictCursor)
         cursor = connection.cursor()
-        break
-    except Exception as error:
-        connection.rollback()
+    except psycopg2.OperationalError as error:
         print(error)
+        time.sleep(2)
 
 
 # >>>>>>>>>>>>>>>> FETCHING ALL PRODUCTS FOR THE HOME PAGE LOADING
